@@ -1,0 +1,20 @@
+<table class="table table-striped m-auto text-center">
+  <thead>
+    <tr>
+      <th *ngFor="let field of items[0] | keyvalue">{{field.key}}</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td *ngFor="let field of item | keyvalue | paginate
+        : {
+            itemsPerPage: itemsPerPage,
+            currentPage: page,
+            totalItems: totalItems
+          }" style="line-height: 4rem;" class="mb-0">
+          <img [src]=field.value *ngIf="field.key=='avatar'" class="w-25 rounded-circle img-fluid img-thumbnail"/>
+           <p *ngIf="field.key!='avatar'"> {{field.value}} </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
