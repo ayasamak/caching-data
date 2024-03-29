@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { UsersService } from '../../users.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { SpinnerComponent } from '../spinner/spinner.component';

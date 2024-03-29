@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { UserDataComponent } from './components/user-data/user-data.component';
-import { HeaderComponent } from './components/user-data/header/header.component';
 import { SharedTableComponent } from './components/shared-table/shared-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -14,6 +13,7 @@ import { FilterPipe } from '../pipe/filter.pipe';
 import { UserComponent } from './components/user-data/user/user.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { BackButtonComponent } from './components/user-data/user/back-button/back-button.component';
 
 // Available options
 interface NgxSpinnerConfig {
@@ -23,11 +23,11 @@ interface NgxSpinnerConfig {
   declarations: [
     UsersComponent,
     UserDataComponent,
-    HeaderComponent,
     SharedTableComponent,
     FilterPipe,
     UserComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    BackButtonComponent
   ],
   imports: [
     CommonModule,

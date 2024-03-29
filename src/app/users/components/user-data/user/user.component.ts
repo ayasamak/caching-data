@@ -1,5 +1,5 @@
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Component } from '@angular/core';
+import { Component,AfterViewInit } from '@angular/core';
 import { UsersService } from 'src/app/users/users.service';
 import { SpinnerComponent } from '../../spinner/spinner.component';
 
@@ -8,15 +8,18 @@ import { SpinnerComponent } from '../../spinner/spinner.component';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent extends SpinnerComponent {
+export class UserComponent extends SpinnerComponent implements AfterViewInit {
 data:any=[]
 constructor(public _UsersService:UsersService,spinner: NgxSpinnerService){
-  super(spinner)
+super(spinner)
 this._UsersService.USERID.subscribe(data=>{
  data !=0? this._UsersService.returnspecificdata(data).subscribe((res:any)=>{
   this.data=[res.data]
   this.spinner.hide();
- }) :  this.spinner.hide();
+ }) : this.spinner.hide();
 })
+}
+ngAfterViewInit(){
+  this.spinner.hide();
 }
 }
