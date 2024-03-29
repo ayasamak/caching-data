@@ -16,7 +16,7 @@ import { CacheInterceptorInterceptor } from './interceptor/caching.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule
-  ],
+    ],
   providers: [ {
       provide:HTTP_INTERCEPTORS,
       useClass:CacheInterceptorInterceptor,

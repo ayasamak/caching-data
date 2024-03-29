@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../users.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import { SpinnerComponent } from '../spinner/spinner.component';
+
 interface USER {
   id: string;
   firstname: string;
@@ -12,31 +15,31 @@ interface USER {
   templateUrl: './user-data.component.html',
   styleUrls: ['./user-data.component.scss']
 })
-export class UserDataComponent {
+export class UserDataComponent extends SpinnerComponent {
   userData:USER[]=[]
-  isLoading = false;
    // MatPaginator Inputs
    page: number = 1;
    itemsPerPage = 6;
    totalItems : any;
-  constructor(public _UsersService:UsersService){}
+   searchText:string=''
+  constructor(public _UsersService:UsersService,spinner: NgxSpinnerService){
+    super(spinner)
+  }
   ngOnInit(): void {
-    //Load initial data
     this.loadData(this.page);
     }
 
   loadData(page: any) {
-    this.isLoading = true;
     this._UsersService.returnUserData(page)
       .subscribe((data:any) =>{
         this.userData=data?.data
         this.itemsPerPage=data?.per_page
         this.totalItems=data?.total
-        this.isLoading = false;
+        this.spinner.hide();
       }, error => {
         console.log(error);
-        this.isLoading = false;
+        this.spinner.hide();
       });
   }
-    
+
 }
